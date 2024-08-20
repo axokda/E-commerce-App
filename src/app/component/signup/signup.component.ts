@@ -20,7 +20,11 @@ export class SignupComponent {
   })
 
   sendData() {
-    console.log(this.register.value);
+if (this.register.valid) {
+      console.log(this.register.value);
+
+}
+
   }
 
 

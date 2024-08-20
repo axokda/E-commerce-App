@@ -12,7 +12,7 @@
         <input formControlName="rePassword" type="password" class="form-control my-3"placeholder="reEnter Your Password">
         <alertError [formName]="register" controlName="rePassword" ></alertError>
 
-        <button class="btn btn-primary w-100 my-3">Register</button>
+        <button class="btn btn-primary w-100 my-3 " [disabled]="register.invalid">Register</button>
 
     </form>
 
