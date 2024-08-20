@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { AlertErrorComponent } from "../../shared/alert-error/alert-error.component";
 
 @Component({
   selector: 'app-signup',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, AlertErrorComponent],
   templateUrl: './signup.component.html',
   styleUrl: './signup.component.scss'
 })
