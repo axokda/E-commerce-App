@@ -10,7 +10,7 @@
                 @if (formName.get(controlName)?.getError('maxlength')) {
                 <li>Input must be at most 30 characters</li>
                 }
-                @if (formName.get(controlName)?.getError(controlName)) {
+                @if (formName.get(controlName)?.getError("email")) {
                     <li>Input must be a valid email</li>
                     }
                     @if (formName.get(controlName)?.getError('pattern')) {
