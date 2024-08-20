@@ -1,1 +1,68 @@
-<p>signup works!</p>
+<div class="w-75 m-auto my-5 ">
+    <h1>Register Now:</h1>
+    <form [formGroup]="register" (ngSubmit)="sendData()">
+        <input formControlName="name" type="text" class="form-control my-3" placeholder="Enter Your Name">
+     @if (register.get("name")?.errors && register.get("name")?.touched) {
+        <div class="alert alert-danger">
+            <ul class="m-0">
+                @if (register.get('name')?.getError('required')) {
+                    <li>Input is required</li>
+                }
+                @if (register.get('name')?.getError('minlength')) {
+                    <li>Input must be at least 3 characters</li>
+                }
+                @if (register.get('name')?.getError('maxlength')) {
+                    <li>Input must be at most 30 characters</li>
+                }
+            </ul>
+        </div>
+     }
+        <input formControlName="email" type="email" class="form-control my-3" placeholder="Enter Your E-mail">
+        @if (register.get("email")?.errors && register.get("email")?.touched) {
+            <div class="alert alert-danger">
+                <ul class="m-0">
+                    @if (register.get('email')?.getError('required')) {
+                        <li>Input is required</li>
+                    }
+                    @if (register.get('email')?.getError('email')) {
+                        <li>Input must be a valid email</li>
+                    }
+                </ul>
+            </div>
+        }
+
+        <input formControlName="password" type="password" class="form-control my-3" placeholder="Enter Your Password">
+
+        @if (register.get("password")?.errors && register.get("password")?.touched) {
+            <div class="alert alert-danger">
+                <ul class="m-0">
+                    @if (register.get('password')?.getError('required')) {
+                        <li>Input is required</li>
+                    }
+                    @if (register.get('password')?.getError('pattern')) {
+                        <li>Input must be a valid password</li>
+                    }
+                </ul>
+            </div>
+        }
+
+        <input formControlName="rePassword" type="password" class="form-control my-3"placeholder="reEnter Your Password">
+
+        @if (register.get("rePassword")?.errors && register.get("rePassword")?.touched) {
+            <div class="alert alert-danger">
+                <ul class="m-0">
+                    @if (register.get('rePassword')?.getError('required')) {
+                        <li>Input is required</li>
+                    }
+                    @if (register.get('rePassword')?.getError('pattern')) {
+                        <li>Input must be a valid password</li>
+                    }
+                </ul>
+            </div>
+        }
+
+        <button class="btn btn-primary w-100 my-3">Register</button>
+
+    </form>
+
+</div>
