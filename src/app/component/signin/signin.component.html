@@ -1,1 +1,27 @@
-<p>signin works!</p>
+<div class="w-75 m-auto my-5 ">
+    <h1>Login Now </h1>
+    <form [formGroup]="loginForm" (ngSubmit)="sendData()">
+    
+        <input [ngClass]="{
+            'is-invalid': loginForm.get('email')?.invalid && loginForm.get('email')?.dirty,
+            'is-valid': !loginForm.get('email')?.invalid && loginForm.get('email')?.dirty
+             }"  formControlName="email" type="email" class="form-control my-3" placeholder="Enter Your E-mail">
+        <alertError [formName]="loginForm" controlName="email" />
+        <input [ngClass]="{
+            'is-invalid': loginForm.get('password')?.invalid && loginForm.get('password')?.dirty,
+            'is-valid': !loginForm.get('password')?.invalid && loginForm.get('password')?.dirty
+             }" formControlName="password" type="password" class="form-control my-3" placeholder="Enter Your Password">
+        <alertError [formName]="loginForm" controlName="password" />
+        
+        <div class="text-danger my-3">{{errorMessage}}</div>
+
+        <button [disabled]="loginForm.invalid || isBtnSubmit" class="btn btn-primary w-100 my-3 " >
+            @if (!isBtnSubmit) {
+                Login
+            }@else {<i class="fa-solid fa-spinner fa-spin"></i>} 
+        </button>
+
+
+    </form>
+
+</div>
