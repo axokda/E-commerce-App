@@ -18,4 +18,12 @@
                         }
             </ul>
         </div>
-        }
+        }@else if(formName.getError('missMatch') && formName.get(controlName)?.touched&&controlName=="rePassword") {
+            <div class="alert alert-danger">
+                <ul class="m-0">
+                    <li>Input must be a valid password</li>
+                </ul>
+            </div>
+            } 
+        
+  

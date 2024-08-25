@@ -2,15 +2,18 @@
     <h1>Register Now:</h1>
     <form [formGroup]="register" (ngSubmit)="sendData()">
         <input formControlName="name" type="text" class="form-control my-3" placeholder="Enter Your Name">
-    <alertError [formName]="register" controlName="name" ></alertError>
+        <alertError [formName]="register" controlName="name" />
         <input formControlName="email" type="email" class="form-control my-3" placeholder="Enter Your E-mail">
-        <alertError [formName]="register" controlName="email" ></alertError>
+        <alertError [formName]="register" controlName="email" />
 
         <input formControlName="password" type="password" class="form-control my-3" placeholder="Enter Your Password">
-        <alertError [formName]="register" controlName="password" ></alertError>
+        <alertError [formName]="register" controlName="password" />
 
-        <input formControlName="rePassword" type="password" class="form-control my-3"placeholder="reEnter Your Password">
-        <alertError [formName]="register" controlName="rePassword" ></alertError>
+        <input formControlName="rePassword" type="password" class="form-control my-3"
+            placeholder="reEnter Your Password">
+        <alertError [formName]="register" controlName="rePassword" />
+
+   
 
         <button class="btn btn-primary w-100 my-3 " [disabled]="register.invalid">Register</button>
 
