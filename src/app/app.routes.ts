@@ -12,6 +12,7 @@ import { OrdersComponent } from './component/orders/orders.component';
 import { SigninComponent } from './component/signin/signin.component';
 import { authGuard } from './core/guard/auth.guard';
 import { islogedinGuard } from './core/guard/islogedin.guard';
+import { ForgotComponent } from './component/forgot/forgot.component';
 
 export const routes: Routes = [
     {path:'',component:AuthLayoutComponent,
@@ -20,6 +21,7 @@ export const routes: Routes = [
         {path:'',redirectTo:'signin',pathMatch:'full'},
         {path:'signup',component:SignupComponent,title:'signup'},
         {path:'signin',component:SigninComponent,title:'signin'},
+        {path:'forgot',component:ForgotComponent,title:'forgot'},
     ]},
     {path:'',
         component:MainLayoutComponent,canActivate:[authGuard],

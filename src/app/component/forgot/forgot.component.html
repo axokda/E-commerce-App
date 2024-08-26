@@ -1,0 +1,65 @@
+<section>
+    @if (steps==1) {
+    <div class="container w-75 m-auto my-5">
+        <h1>Forgot Password</h1>
+        <form [formGroup]="forgotPasswords" (ngSubmit)="submitStep1()">
+            <input ngClass="{
+                'is-invalid': forgotPasswords.get('email')?.invalid && forgotPasswords.get('email')?.dirty,
+                'is-valid': !forgotPasswords.get('email')?.invalid && forgotPasswords.get('email')?.dirty
+            }" formControlName="email" type="email" class="form-control my-3" placeholder="Enter Your E-mail">
+            <alertError [formName]="forgotPasswords" controlName="email" />
+            <div class="text-danger my-3">{{errorMessage}}</div>
+            <div class="d-flex justify-content-between">
+                <button [disabled]="forgotPasswords.invalid || isBtnSubmit" class="btn btn-success w-25 my-3">
+                    @if (!isBtnSubmit) {
+                    Reset Password
+                    }@else {<i class="fa-solid fa-spinner fa-spin"></i>}
+                </button>
+            </div>
+        </form>
+    </div>
+    }@else if (steps==2) {
+    <div class="container w-75 m-auto my-5">
+        <h1>Verify Reset Code</h1>
+        <form [formGroup]="verifyResetCode" (ngSubmit)="submitStep2()">
+            <input ngClass="{
+                'is-invalid': verifyResetCode.get('resetCode')?.invalid && verifyResetCode.get('resetCode')?.dirty,
+                'is-valid': !verifyResetCode.get('resetCode')?.invalid && verifyResetCode.get('resetCode')?.dirty
+            }" formControlName="resetCode" type="text" class="form-control my-3" placeholder="Enter Code">
+            <alertError [formName]="verifyResetCode" controlName="resetCode" />
+            <div class="text-danger my-3">{{errorMessage}}</div>
+            <div class="d-flex justify-content-between">
+                <button [disabled]="verifyResetCode.invalid || isBtnSubmit" class="btn btn-success w-25 my-3">
+                    @if (!isBtnSubmit) {
+                    Verify Code
+                    }@else {<i class="fa-solid fa-spinner fa-spin"></i>}
+                </button>
+            </div>
+        </form>
+    </div>
+    }@else if (steps== 3) {
+    <div class="container w-75 m-auto my-5">
+        <h1>Reset Password</h1>
+        <form [formGroup]="resetPassword" (ngSubmit)="submitStep3()">
+            <input  hidden  ngClass="{
+                'is-invalid': resetPassword.get('email')?.invalid && resetPassword.get('email')?.dirty,
+                'is-valid': !resetPassword.get('email')?.invalid && resetPassword.get('email')?.dirty
+            }" formControlName="email" type="email" class="form-control my-3" placeholder="Enter Your E-mail">
+            <alertError [formName]="resetPassword" controlName="email" />
+            <input ngClass="{
+                'is-invalid': resetPassword.get('newPassword')?.invalid && resetPassword.get('newPassword')?.dirty,
+                'is-valid': !resetPassword.get('newPassword')?.invalid && resetPassword.get('newPassword')?.dirty
+            }" formControlName="newPassword" type="password" class="form-control my-3" placeholder="Enter Your New Password">
+            <alertError [formName]="resetPassword" controlName="newPassword" />
+            <div class="text-danger my-3">{{errorMessage}}</div>
+            <div class="d-flex justify-content-between">
+                <button [disabled]="resetPassword.invalid || isBtnSubmit" class="btn btn-success w-25 my-3">
+                    @if (!isBtnSubmit) {
+                    Confirm Password
+                    }@else {<i class="fa-solid fa-spinner fa-spin"></i>}
+                </button>
+            </div>
+        </form>
+    </div>
+    }
+</section>

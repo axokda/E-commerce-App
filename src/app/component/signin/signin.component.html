@@ -15,13 +15,17 @@
         
         <div class="text-danger my-3">{{errorMessage}}</div>
 
-        <button [disabled]="loginForm.invalid || isBtnSubmit" class="btn btn-primary w-100 my-3 " >
-            @if (!isBtnSubmit) {
-                Login
-            }@else {<i class="fa-solid fa-spinner fa-spin"></i>} 
-        </button>
-
-
+        <div class="d-flex justify-content-between">
+            <button [disabled]="loginForm.invalid || isBtnSubmit" class="btn btn-success w-25 my-3 " >
+                @if (!isBtnSubmit) {
+                    Login
+                }@else {<i class="fa-solid fa-spinner fa-spin"></i>} 
+            </button>
+    
+            <a routerLink="/forgot" class="link-primary" >forgot Password?</a>
+    
+        </div>
+       
     </form>
 
 </div>
