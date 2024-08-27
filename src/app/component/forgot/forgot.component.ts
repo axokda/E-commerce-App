@@ -53,6 +53,9 @@ steps: number = 1
       this._AuthService.forgotPasswords(this.forgotPasswords.value).subscribe({
         next: (res) => {
           this.steps = 2;
+          localStorage.setItem('currentStep',this.steps.toString());
+          
+
           this.isBtnSubmit = false;
         },
         error: (err: HttpErrorResponse) => {
@@ -69,6 +72,7 @@ steps: number = 1
       this._AuthService.verifyResetCode(this.verifyResetCode.value).subscribe({
         next: (res) => {
           this.steps = 3
+          localStorage.setItem('currentStep',this.steps.toString())
           this.isBtnSubmit = false
         }, error: (err:HttpErrorResponse) => {
           console.log(err.error.message);
@@ -94,6 +98,13 @@ steps: number = 1
           this.isBtnSubmit = false
         }
       })
+    }
+  }
+
+  ngonInit() {
+    const currentStep = localStorage.getItem('currentStep')
+    if(currentStep){
+      this.steps = parseInt(currentStep) || 1
     }
   }
 
