@@ -38,7 +38,7 @@ export class CategoriSliderComponent {
         items: 8
       }
     },
-    nav: true
+    nav: false
   }
 
 

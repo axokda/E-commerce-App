@@ -1,1 +1,32 @@
-<p>cart works!</p>
+<div class="container my-5 bg-main-light p-4 rounded-4 ">
+    <h3>Total Cart Items : {{cart.numOfCartItems}}</h3>
+    <h1 class="text-main ">Shopping Cart</h1>
+    <p class=" fw-bolder fs-5">Total Cart Price : {{cart.data.totalCartPrice}} EGP</p>
+
+
+    @for (product of cart.data.products; track $index) {
+    <div class="row my-2 border-bottom py-2">
+
+        <div class="col-md-1">
+            <img [src]="product.product.imageCover" class="w-100" alt="">
+        </div>
+
+        <div class="col-md-11 d-flex justify-content-between ">
+            <div>
+                <h4>{{product.product.title}}</h4>
+                <p>price : {{product.price}} EGP </p>
+                <button (click)="updateQuantity(product.product._id,-1)" class="btn btn-danger"><span><i
+                            class="fa-solid fa-trash"></i></span> Remove</button>
+            </div>
+            <div>
+                <button (click)="updateQuantity(product.product._id, +1)" class="main-border btn"><span><i
+                            class="fa-solid fa-plus"></i></span></button>
+                <span class="mx-3 fw-bolder">{{product.count}}</span>
+                <button (click)="updateQuantity(product.product._id,-1)" class="main-border btn  "><span><i
+                            class="fa-solid fa-minus"></i></span></button>
+            </div>
+        </div>
+    </div>
+    }
+
+    <button class="btn btn-primary bg-main w-100 my-2">Checkout</button>
