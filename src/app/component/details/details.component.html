@@ -1,0 +1,15 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <img [src]="product.imageCover" alt="" class="w-100">
+        </div>
+        <div class="col-md-9">
+            <h4>{{product.title}}</h4>
+            <p>{{product.description}}</p>
+            <div class="d-flex justify-content-between align-items-center">  <h5 class="text-main fw-bolder">{{product.price}} EGP</h5>
+            <h5 class="text-main fw-bolder">{{product.ratingsAverage}} <span><i class="fa-solid fa-star text-warning "></i></span></h5></div>
+          
+            <button class="btn btn-primary bg-main w-100 my-2 ">Add To Cart</button>
+        </div>
+    </div>
+</div>

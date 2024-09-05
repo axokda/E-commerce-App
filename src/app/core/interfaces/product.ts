@@ -6,6 +6,7 @@ export interface Subcategory {
   }
   
   export interface product {
+_id: any;
     id: string;
     title: string;
     slug: string;

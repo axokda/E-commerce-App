@@ -13,6 +13,7 @@ import { SigninComponent } from './component/signin/signin.component';
 import { authGuard } from './core/guard/auth.guard';
 import { islogedinGuard } from './core/guard/islogedin.guard';
 import { ForgotComponent } from './component/forgot/forgot.component';
+import { DetailsComponent } from './component/details/details.component';
 
 export const routes: Routes = [
     {path:'',component:AuthLayoutComponent,
@@ -33,6 +34,7 @@ export const routes: Routes = [
         {path:'products',component:ProductsComponent,title:'products'},
         {path:'cart',component:CartComponent,title:'cart'},
         {path:'orders',component:OrdersComponent,title:'orders'},
+        {path:'details/:id',component:DetailsComponent,title:'details'},
     ]},
     {path:'**',component:NotFoundComponent,title:'not found'}
 ];
