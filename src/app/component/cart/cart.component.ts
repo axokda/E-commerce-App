@@ -3,11 +3,12 @@ import { CommonModule } from '@angular/common';
 import { _CartService } from '../../core/services/cart.service';
 import { Cart } from '../../core/interfaces/cart';
 import { ToastrService } from 'ngx-toastr';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-cart',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLink],
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.scss']
 })
