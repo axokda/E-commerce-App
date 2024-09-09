@@ -1,32 +1,45 @@
-<div class="container my-5 bg-main-light p-4 rounded-4 ">
-    <h3>Total Cart Items : {{cart.numOfCartItems}}</h3>
-    <h1 class="text-main ">Shopping Cart</h1>
-    <p class=" fw-bolder fs-5">Total Cart Price : {{cart.data.totalCartPrice}} EGP</p>
+@if (!isLoading) {
 
+
+@if (cart.numOfCartItems!=0) {
+<div class="container my-5 bg-main-light p-4 rounded-4">
+    <h2>Items: {{cart.numOfCartItems}}</h2>
+    <h1 class="text-main">Shop Cart</h1>
+    <h3 class="text-main">Total Cart Price: {{cart.data.totalCartPrice}} EGP</h3>
 
     @for (product of cart.data.products; track $index) {
     <div class="row my-2 border-bottom py-2">
-
         <div class="col-md-1">
-            <img [src]="product.product.imageCover" class="w-100" alt="">
+            <img src="{{product.product.imageCover}}" class="w-100" alt="">
         </div>
-
-        <div class="col-md-11 d-flex justify-content-between ">
+        <div class="col-md-11 d-flex justify-content-between">
             <div>
                 <h4>{{product.product.title}}</h4>
-                <p>price : {{product.price}} EGP </p>
-                <button (click)="updateQuantity(product.product._id,-1)" class="btn btn-danger"><span><i
-                            class="fa-solid fa-trash"></i></span> Remove</button>
+                <p class="text-main">Price: {{product.price}}</p>
+                <button (click)="deleteItem(product.product._id)" class="btn text-danger border border-1 "
+                    id="removeButton">Remove <i class="fa-solid fa-trash"></i></button>
             </div>
             <div>
-                <button (click)="updateQuantity(product.product._id, +1)" class="main-border btn"><span><i
-                            class="fa-solid fa-plus"></i></span></button>
-                <span class="mx-3 fw-bolder">{{product.count}}</span>
-                <button (click)="updateQuantity(product.product._id,-1)" class="main-border btn  "><span><i
-                            class="fa-solid fa-minus"></i></span></button>
+                <button (click)="updateQTY(product.product._id,product.count+1)" class="btn main-border">+</button>
+                <span class="mx-2">{{product.count}}</span>
+                <button [disabled]="product.count==1" (click)="updateQTY(product.product._id,product.count-1)" class="btn main-border">-</button>
             </div>
         </div>
     </div>
     }
+    <button class="btn btn-primary bg-main w-100 my-2 ">Place Order</button>
 
-    <button class="btn btn-primary bg-main w-100 my-2">Checkout</button>
+</div>
+}@else {
+<div>
+    <h2 class="text-main fw-bolder my-5 text-center "> Cart is Empty </h2>
+</div>
+
+}
+
+
+}@else {
+<div>
+    <h2 class="text-main fw-bolder my-5 text-center ">Loading</h2>
+</div>
+}

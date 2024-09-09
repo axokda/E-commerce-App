@@ -7,51 +7,44 @@ import { Token } from '@angular/compiler';
 @Injectable({
   providedIn: 'root'
 })
-export class CartService {
+export class _CartService {
 
-  headers = {
-    Token: localStorage.getItem('token')!
-  }
 
   constructor(private _HttpClient: HttpClient) { }
 
-  addProductToCart(productId: string): Observable<any> {
-    return this._HttpClient.post(baseUrl + 'api/v1/cart', { productId }, {
+  addProductToCart = (productId: string): Observable<any> => {
+    return this._HttpClient.post(baseUrl + "api/v1/cart", { productId }, {
       headers: {
-        ...this.headers
+        Token: localStorage.getItem('token')!
       }
     });
   }
-
-  updateProductQuantity(productId: string, count: number): Observable<any> {
-    return this._HttpClient.put(baseUrl + 'api/v1/cart/' + productId, { count }, {
+  updateProductQTY = (productId: string, count: number): Observable<any> => {
+    return this._HttpClient.put(`${baseUrl}api/v1/cart/${productId}`, { count }, {
       headers: {
-        ...this.headers
+        token: localStorage.getItem('token')!
       }
-    });
+    })
   }
-
-  removeItem(productId: string): Observable<any> {
-    return this._HttpClient.delete(baseUrl + 'api/v1/cart' + productId, {
+  removeItem = (productId: string): Observable<any> => {
+    return this._HttpClient.delete(`${baseUrl}api/v1/cart/${productId}`, {
       headers: {
-        ...this.headers
+        token: localStorage.getItem('token')!
       }
-    });
+    })
   }
-  ClearCart(): Observable<any> {
-    return this._HttpClient.delete(baseUrl + 'api/v1/cart', {
+  clearCart = (): Observable<any> => {
+    return this._HttpClient.delete(`${baseUrl}api/v1/cart/`, {
       headers: {
-        ...this.headers
+        token: localStorage.getItem('token')!
       }
-    });
+    })
   }
-
-  getLoggedUserCart(productId: string): Observable<any> {
-    return this._HttpClient.get(baseUrl + 'api/v1/cart', {
-      headers: {
-        ...this.headers
-      }
-    });
-  }
-
+  getLoggedUserCart = (): Observable<any> => {
+    return this._HttpClient.get(`${baseUrl}api/v1/cart/`, {
+        headers: {
+          token: localStorage.getItem('token')!
+        }
+    })
+}
 }

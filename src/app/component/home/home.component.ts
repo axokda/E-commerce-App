@@ -4,7 +4,7 @@ import { product } from '../../core/interfaces/product';
 import { SliderComponent } from "../slider/slider.component";
 import { CategoriSliderComponent } from "../categori-slider/categori-slider.component";
 import { RouterLink } from '@angular/router';
-import { CartService } from '../../core/services/cart.service';
+import { _CartService } from '../../core/services/cart.service';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
@@ -19,7 +19,7 @@ export class HomeComponent implements OnInit {
   allproducts: product[] = [];
 
   constructor(private _ProductsService: ProductsService) { }
-  private readonly _CartService = inject(CartService);
+  private readonly _CartService = inject(_CartService);
   private readonly toastr = inject(ToastrService);
 
   getProducts = () => {
@@ -39,23 +39,18 @@ export class HomeComponent implements OnInit {
     this._CartService.addProductToCart(productId).subscribe({
       next: (res) => {
         console.log(res);
-        this.toastr.success('product added successfully', '',{
-          positionClass: 'toast-bottom-right',
+        this.toastr.success('Product added successfully', '', {
           progressBar: true,
-          progressAnimation: 'decreasing',
-          timeOut: 2000,
-          easing: 'ease-in' ,
-          
+          progressAnimation: 'increasing',
+         
         });
-
       },
       error: (err) => {
         console.log(err);
       }
-
-    })
-  }
-
+    });
+  };
+  
   ngOnInit(): void {
     this.getProducts();
   }
