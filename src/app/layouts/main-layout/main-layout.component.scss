@@ -1,0 +1,12 @@
+.upBtn{
+    position: fixed;
+    right: 15px;
+    bottom: 15px;
+    background-color: chartreuse;
+    z-index: 1000;
+}
+
+.upBtn:hover {
+    background-color: rgba(8, 77, 8, 0.821);
+    color: aliceblue;
+}

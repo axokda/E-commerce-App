@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { NavbarComponent } from "../../component/navbar/navbar.component";
 import { RouterOutlet } from '@angular/router';
 
@@ -10,5 +10,21 @@ import { RouterOutlet } from '@angular/router';
   styleUrl: './main-layout.component.scss'
 })
 export class MainLayoutComponent {
+showBtn: any;
+
+  scrollToTop() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+  
+  @HostListener('window:scroll') scrollTop(){
+    let scrollToTop = document.documentElement.scrollTop;
+    if (scrollToTop > 750) {
+      
+      this.showBtn = true;
+    } else {
+      this.showBtn = false;
+    }
+  }
 
 }
+

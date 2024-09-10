@@ -18,6 +18,7 @@ export class CategoriSliderComponent {
     autoplayTimeout: 2000,
     autoplayHoverPause: true,
     mouseDrag: true,
+    rtl: true,
     touchDrag: false,
     margin: 10,
     pullDrag: false,

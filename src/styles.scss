@@ -81,5 +81,24 @@ border-radius: 8px;
 }
 
 
+::-webkit-scrollbar {
+    width: 12px;
+  }
+  
+ 
+  ::-webkit-scrollbar-track {
+    background: #757d72; 
+  }
+   
+ 
+  ::-webkit-scrollbar-thumb {
+    background: #5cd803; 
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: #3cff00; 
+  }
+
+
 
 
