@@ -40,6 +40,7 @@ getLoggedUserCart = () => {
     this._CartService.removeItem(productId).subscribe({
       next: (res) => {
         console.log(res);
+        this._CartService.cartCounter.next(res.numOfCartItems);
         this.cart = res; 
         this.toastr.success('Product deleted successfully', '', {
           progressBar: true,         

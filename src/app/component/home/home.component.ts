@@ -25,26 +25,22 @@ export class HomeComponent implements OnInit {
   term: string = '';
   allproducts: product[] = [];
 
-  // constructor(private _ProductsService: ProductsService) { }
-  // private readonly _CartService = inject(_CartService);
-  // private readonly toastr = inject(ToastrService);
-  // private spinner!: NgxSpinnerService;
 
   constructor(
     private _ProductsService: ProductsService,
     private token: AuthService,
     private _CartService: _CartService,
     private _ToastrService: ToastrService,
-    // private spinner: NgxSpinnerService
+   
   ) {}
 
 
   getProducts = () => {
-    // this.spinner.show('fire');
+    
     this._ProductsService.getproducts().subscribe({
       next: (res) => {
         this.allproducts = res.data;
-        // this.spinner.hide('fire');
+      
       },
       error: (error) => {
         console.log(error);
@@ -56,6 +52,7 @@ export class HomeComponent implements OnInit {
   addToCart = (productId: string) => {
     this._CartService.addProductToCart(productId).subscribe({
       next: (res) => {
+        this._CartService.cartCounter.next(res.numOfCartItems);
         console.log(res);
         this._ToastrService.success('Product added successfully', '', {
           progressBar: true,

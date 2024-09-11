@@ -15,6 +15,7 @@ import { islogedinGuard } from './core/guard/islogedin.guard';
 import { ForgotComponent } from './component/forgot/forgot.component';
 import { DetailsComponent } from './component/details/details.component';
 import { AddressComponent } from './component/address/address.component';
+import { WishlistComponent } from './component/wishlist/wishlist.component';
 
 export const routes: Routes = [
     {path:'',component:AuthLayoutComponent,
@@ -37,6 +38,8 @@ export const routes: Routes = [
         {path:'orders',component:OrdersComponent,title:'orders'},
         {path:'details/:id',component:DetailsComponent,title:'details'},
         {path:'address/:id',component:AddressComponent,title:'details'},
+        { path: 'wishlist', component: WishlistComponent, title: 'Wishlist' } 
+
     ]
 
 },

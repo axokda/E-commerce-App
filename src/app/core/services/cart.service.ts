@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { baseUrl } from '../../enviroment/enviroment.local';
 import { Token } from '@angular/compiler';
 
@@ -8,6 +8,10 @@ import { Token } from '@angular/compiler';
   providedIn: 'root'
 })
 export class _CartService {
+
+  cartCounter: BehaviorSubject<number> = new BehaviorSubject(0)
+
+  
 
 
   constructor(private _HttpClient: HttpClient) { }
