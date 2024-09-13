@@ -8,8 +8,12 @@ import { Token } from '@angular/compiler';
   providedIn: 'root'
 })
 export class _CartService {
+  addProductCart(productId: string) {
+    throw new Error('Method not implemented.');
+  }
 
   cartCounter: BehaviorSubject<number> = new BehaviorSubject(0)
+  cartNumber: any;
 
   
 

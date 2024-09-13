@@ -1,27 +1,36 @@
-import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
+import { inject, Injectable, signal, WritableSignal } from '@angular/core';
 import { Observable } from 'rxjs';
+import { baseUrl } from '../../enviroment/enviroment.local';
+import { environment } from '../../enviroment/enviroment.local';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class WishlistService {
-  constructor(private http: HttpClient) {}
+  removeFromWishlist(id: string) {
+    throw new Error('Method not implemented.');
+  }
+  private readonly _HttpClient = inject(HttpClient)
 
-  addProductToWishlist(productId: string, string: any) {
-    const headers = new HttpHeaders().set('Authorization', `Bearer your_token`); // Replace with your actual token
-    const body = { productId };
+  wishListId:WritableSignal<string[]> = signal([])
+  countWishItems:WritableSignal<number> = signal(0)
 
-    this.http.post('https://ecommerce.routemisr.com/api/v1/wishlist', body, { headers })
-      .subscribe(
-        (response) => {
-          // Handle successful wishlist addition (e.g., show a success message)
-          console.log('Product added to wishlist successfully:', response);
-        },
-        (error) => {
-          // Handle errors (e.g., display an error message)
-          console.error('Error adding product to wishlist:', error);
-        }
-      );
+  addProductToWishlist(productId:string):Observable<any>{
+    return this._HttpClient.post(`${environment.baseUrl}/api/v1/wishlist`,
+      {
+        'productId': productId
+      }
+    )
+
+  }
+
+  getProductWishlist():Observable<any>{
+    return this._HttpClient.get(`${environment.baseUrl}/api/v1/wishlist`)
+  }
+
+  removeProductWishlist(id:string):Observable<any>{
+    return this._HttpClient.delete(`${environment.baseUrl}/api/v1/wishlist/${id}`)
   }
 }
