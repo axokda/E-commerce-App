@@ -15,7 +15,7 @@ export function HttpLoaderFactory(http: HttpClient) {
 }
 
 export const appConfig: ApplicationConfig = {
-  providers: [provideRouter(routes, withHashLocation(), withViewTransitions(), withInMemoryScrolling({ scrollPositionRestoration: 'top' })
+  providers: [provideRouter(routes, /*withHashLocation(),*/ withViewTransitions(), withInMemoryScrolling({ scrollPositionRestoration: 'top' })
   ), provideHttpClient(),
   provideHttpClient(withInterceptors([loadingInterceptor])),
   importProvidersFrom(BrowserAnimationsModule,

@@ -16,7 +16,7 @@
         @for (product of allproducts|search:term; track $index) {
 
         <div class="col-md-2">
-            <div class="product cursor-pointer ">
+            <div class="product">
                 <div [routerLink]="['/details', product._id]">
                     <img [src]="product.imageCover" alt="" class="w-100">
                     <h6 class="text-main">{{product.category.name|titlecase}}</h6>
@@ -29,6 +29,15 @@
                     <p class="text-danger">{{product.quantity|soldOut}}</p>
                 </div>
                 <button (click)="addToCart(product._id)" class="btn btn-primary bg-main w-100 my-2 ">Add To Cart</button>
+
+
+                @if (product.isWished==true) {
+                    <button (click)="addToWishlist(product._id)" class="btn btn-link text-danger  my-2"><i class="fa-solid fa-heart "></i></button>
+
+                }@else {
+                    <button (click)="addToWishlist(product._id)" class="btn btn-link text-muted  my-2"><i class="fa-solid fa-heart "></i></button>
+
+                }
             </div>
 
         </div>

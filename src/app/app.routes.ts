@@ -18,7 +18,7 @@ import { DetailsComponent } from './component/details/details.component';
 import { AddressComponent } from './component/address/address.component';
 import { WishlistComponent } from './component/wishlist/wishlist.component';
 
-const routes: Routes = [
+export const routes: Routes = [
   {
     path: '',
     component: AuthLayoutComponent,

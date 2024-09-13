@@ -33,9 +33,7 @@
 
                 <li class="nav-item">
                     <a class="nav-link position-relative" routerLink="/wishlist" routerLinkActive="navbar-active ">
-                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">1
-                            <span class="visually-hidden">unread messages</span>
-                        </span>{{'navbar.wishlist' | translate}}<i class="fa-regular fa-heart"></i></a>
+                         {{'navbar.wishlist' | translate}}<i class="fa-regular fa-heart"></i></a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link position-relative" routerLink="/cart" routerLinkActive="navbar-active ">
@@ -45,7 +43,7 @@
                             class="fa-solid fa-cart-shopping"></i></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" routerLink="/logout" routerLinkActive="navbar-active ">{{'navbar.logout' |
+                    <a class="nav-link  " (click)="signOut()" href="#"  routerLinkActive="navbar-active ">{{'navbar.logout' |
                         translate}}</a>
                 </li>
                 <div class="d-flex bg-main border-2 border-light-subtle border rounded-2  ">

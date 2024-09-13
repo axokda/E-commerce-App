@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { RouterLink, RouterLinkActive } from '@angular/router';
+import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { TranslationService } from '../../core/services/translation.service'; 
 import { _CartService } from '../../core/services/cart.service';
@@ -20,6 +20,14 @@ private readonly _cartservice = inject(_CartService)
 
   private readonly _translationService = inject(TranslationService);
 
+  private readonly _Router = inject (Router)
+
+
+  signOut() {
+    
+    localStorage.removeItem('token')
+    this._Router.navigate(["/signin"])
+  }
 
   getLoggedUserCart = () => {
     this._cartservice.getLoggedUserCart().subscribe({

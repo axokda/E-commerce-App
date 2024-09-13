@@ -11,10 +11,10 @@ export class BrandsService {
   constructor(private httpClient: HttpClient) {}
 
   getAllBrands(): Observable<Brand[]> {
-    return this.httpClient.get<Brand[]>(`${baseUrl}/api/v1/brands`);
+    return this.httpClient.get<Brand[]>(`${baseUrl}api/v1/brands`);
   }
 
   getSpecificBrand(id: string): Observable<Brand> {
-    return this.httpClient.get<Brand>(`${baseUrl}/api/v1/brands/${id}`);
+    return this.httpClient.get<Brand>(`${baseUrl}api/v1/brands/${id}`);
   }
 }

@@ -12,6 +12,8 @@ import { SearchPipe } from '../../core/pipes/search.pipe';
 import { FormsModule } from '@angular/forms';
 import { NgxSpinnerModule, NgxSpinnerService } from 'ngx-spinner';
 import { AuthService } from '../../core/services/auth.service';
+import { WishlistService } from '../../core/services/wishlist.service';
+import { Wishlist } from '../../core/interfaces/whishlist';
 
 @Component({
   selector: 'app-home',
@@ -24,6 +26,8 @@ export class HomeComponent implements OnInit {
 
   term: string = '';
   allproducts: product[] = [];
+  wishlists : Wishlist[] = [];
+
 
 
   constructor(
@@ -31,8 +35,24 @@ export class HomeComponent implements OnInit {
     private token: AuthService,
     private _CartService: _CartService,
     private _ToastrService: ToastrService,
+    private _WishlistService :WishlistService
    
   ) {}
+
+
+
+setWishedProducts(){
+  for (let i = 0; i < this.wishlists.length; i++) {
+   
+    for (let j = 0; j < this.allproducts.length; j++) {
+      
+      if (this.wishlists[i]._id == this.allproducts[j]._id) {
+        this.allproducts[j].isWished = true 
+      }
+    }
+    
+  }
+}
 
 
   getProducts = () => {
@@ -40,6 +60,8 @@ export class HomeComponent implements OnInit {
     this._ProductsService.getproducts().subscribe({
       next: (res) => {
         this.allproducts = res.data;
+        this.getWishlist();
+
       
       },
       error: (error) => {
@@ -48,6 +70,22 @@ export class HomeComponent implements OnInit {
     });
   };
 
+  addToWishlist(productId:string){
+
+    this._WishlistService.addProductToWishlist(productId).subscribe({
+      next: (res)=>{
+        console.log(res);
+        this.getWishlist()
+        this._ToastrService.success('Product added to wishlist', '', {
+          progressBar: true,
+          progressAnimation: 'increasing',
+         
+        });
+        
+      }
+    })
+
+  }
 
   addToCart = (productId: string) => {
     this._CartService.addProductToCart(productId).subscribe({
@@ -65,6 +103,21 @@ export class HomeComponent implements OnInit {
       }
     });
   };
+
+  getWishlist() {
+    this._WishlistService.getProductWishlist().subscribe({
+
+      next: (res: any) => {
+        this.wishlists = res.data
+        console.log(this.wishlists);
+
+        this.setWishedProducts()
+
+
+      }
+    })
+  }
+
   
   ngOnInit(): void {
     this.getProducts();

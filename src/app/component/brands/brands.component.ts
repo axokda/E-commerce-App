@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { BrandsService } from '../../core/services/brands.service'; 
-import { Brand } from '../../core/interfaces/brands'; 
+import { Component, inject, OnInit } from '@angular/core';
+import { BrandsService } from '../../core/services/brands.service';
+import { Brand } from '../../core/interfaces/brands';
+
 
 @Component({
   selector: 'app-brands',
@@ -8,43 +9,30 @@ import { Brand } from '../../core/interfaces/brands';
   styleUrls: ['./brands.component.scss']
 })
 export class BrandsComponent implements OnInit {
-countWishList() {
-throw new Error('Method not implemented.');
-}
-wishList() {
-throw new Error('Method not implemented.');
-}
-deletewishlistItem(arg0: any) {
-throw new Error('Method not implemented.');
-}
-addToCart(arg0: any) {
-throw new Error('Method not implemented.');
-}
-  allBrands: Brand[] = [];
-  selectedBrand: Brand | null = null;
 
-  constructor(private brandsService: BrandsService) {}
+  private readonly _BrandsService = inject(BrandsService)
 
-  ngOnInit() {
-    this.getBrands();
-  }
+  allBrands: Brand[] = []
+
+
 
   getBrands() {
-    this.brandsService.getAllBrands().subscribe({
-      next: (brands) => {
-        this.allBrands = brands;
+    this._BrandsService.getAllBrands().subscribe({
+
+      next: (res:any) => {
+        this.allBrands = res.data
+        console.log(this.allBrands)
       },
-      error: (error) => {
-        console.error('Error fetching brands:', error);
-      }
-    });
+
+    })
   }
 
-  viewBrand(id: string) {
-    this.selectedBrand = this.allBrands.find(brand => brand._id === id) || null;
+
+  ngOnInit(): void {
+
+    this.getBrands()
+
   }
 
-  trackBrand(index: number, brand: Brand) {
-    return brand._id; 
-  }
+
 }

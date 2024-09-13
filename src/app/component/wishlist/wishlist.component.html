@@ -1,17 +1,24 @@
 <div class="container">
     <h1 class="text-main my-5">My Wishlist</h1>
+
+    @for (product of wishlists; track $index) {
+
+
     <div class="row">
         <div class="col-md-3">
-            <img src="https://ecommerce.routemisr.com/Route-Academy-products/1680403397402-cover.jpeg"
+            <img [src]="product.imageCover"
                 alt="product image" class="w-100">
         </div>
         <div class="col-md-9">
-            <h4>Woman Shawl</h4>
-            <p>Material Polyester Blend Colour Name Multicolour Department Women</p>
+            <h4>{{product.title}}</h4>
+            <p>{{product.description}}</p>
             <div class="d-flex justify-content-between align-items-center">
-                <h5 class="text-main">170 EGP</h5>
-                <button class="btn btn-primary bg-main">Add To Cart</button>
+                <h5 class="text-main">{{product.price}}EGP</h5>
+                <button class="btn text-light  bg-main" (click)="addToCart(product._id)">Add To Cart</button>
+                <button class="btn text-light  bg-danger" (click)="removeFromWishlist(product._id)">Remove</button>
             </div>
         </div>
     </div>
+    }
+
 </div>
