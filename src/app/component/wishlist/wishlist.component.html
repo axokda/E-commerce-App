@@ -1,24 +1,30 @@
-<div class="container">
-    <h1 class="text-main my-5">My Wishlist</h1>
-
-    @for (product of wishlists; track $index) {
-
-
-    <div class="row">
-        <div class="col-md-3">
-            <img [src]="product.imageCover"
-                alt="product image" class="w-100">
-        </div>
-        <div class="col-md-9">
-            <h4>{{product.title}}</h4>
-            <p>{{product.description}}</p>
+<div class="container my-5">
+    <h1 class="text-main my-5">
+      My Wishlist <i class="fa-regular fa-heart"></i> 
+      <span class="wishlist-counter">({{ wishlists.length }}) Items in Wishlist</span> 
+    </h1>
+  
+    @if (wishlists.length > 0) {
+      @for (product of wishlists; track $index) {
+        <div class="row my-3 p-2 border border-1 wishlist-item">
+          <div class="col-4 col-md-3">
+            <img [src]="product.imageCover" alt="product image" class="w-100 product-image">
+          </div>
+          <div class="col-8 col-md-9">
+            <h5 class="product-title">{{product.title}}</h5>
+            <p class="product-description">{{product.description}}</p>
             <div class="d-flex justify-content-between align-items-center">
-                <h5 class="text-main">{{product.price}}EGP</h5>
-                <button class="btn text-light  bg-main" (click)="addToCart(product._id)">Add To Cart</button>
-                <button class="btn text-light  bg-danger" (click)="removeFromWishlist(product._id)">Remove</button>
+              <h6 class="text-main">{{product.price}} EGP</h6>
+              <button class="btn btn-sm text-light bg-main" (click)="addToCart(product._id)">Add To Cart</button>
+              <button class="btn btn-sm text-light bg-danger" (click)="removeFromWishlist(product._id)">Remove</button>
             </div>
+          </div>
         </div>
-    </div>
+      }
+    } @else {
+      <div>
+        <h2 class="text-main fw-bolder my-5 text-center">Wishlist is Empty</h2>
+      </div>
     }
-
-</div>
+  </div>
+  

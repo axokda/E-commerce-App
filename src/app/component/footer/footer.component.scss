@@ -1,29 +1,65 @@
-
-
 footer {
-    background-color: #f8f9fa;
-    padding: 2rem 0;
-  }
+  background-color: #131517; 
+  color: #fff;
   
-  footer h5, footer h6 {
-    color: #000;
+ 
+
+  h5 {
+    color: #fff;
+    font-size: 1.25rem;
   }
-  
-  footer p {
-    color: #6c757d;
+
+  p {
+    color: #adb5bd;
   }
-  
-  footer .form-control {
+
+  .form-control {
     max-width: 250px;
-    display: inline-block;
+    max-height: 40px; 
   }
-  
-  footer img {
-    max-height: 40px;
-  }
-  
-  footer .btn-success {
+
+  .btn-success {
     background-color: #28a745;
     border-color: #28a745;
   }
-  
+
+  .footer-bottom {
+    background-color: #0f1214;
+    padding: 1rem 0;
+    border-top: 1px solid #495057;
+  }
+
+  .img-fluid {
+    max-height:100px;
+  }
+
+  a {
+    color: #fff;
+    &:hover {
+      color: #28a745;
+    }
+  }
+
+  .fa-facebook,
+  .fa-twitter,
+  .fa-instagram,
+  .fa-youtube {
+    transition: color 0.3s ease;
+  }
+
+  .fa-facebook:hover {
+    color: #3b5998;
+  }
+
+  .fa-twitter:hover {
+    color: #00acee;
+  }
+
+  .fa-instagram:hover {
+    color: #e1306c;
+  }
+
+  .fa-youtube:hover {
+    color: #ff0000;
+  }
+}
